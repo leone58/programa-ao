@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="bg-background">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semana 9 — Estruturas de Repetição (loop for)</title>
+  <meta name="description" content="Aula interativa sobre o loop for em Python: sintaxe, iteração sobre coleções, range() e tabelas de multiplicação. Inclui quiz." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Barra de progresso -->
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-badge">S9</span>
+        <div>
+          <p class="brand-kicker">Semana 9 · Programação</p>
+          <h1 class="brand-title">Estruturas de Repetição — o loop <code>for</code></h1>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Navegação das aulas">
+        <a href="#intro">Início</a>
+        <a href="#aula1">Aula 1</a>
+        <a href="#aula2">Aula 2</a>
+        <a href="#aula3">Aula 3</a>
+        <a href="#aula4">Desafio</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section id="intro" class="section hero">
+      <div class="container">
+        <p class="eyebrow">Aula de hoje · ~150 minutos</p>
+        <h2 class="hero-title text-balance">Por que repetir código à mão se o computador pode repetir por você?</h2>
+        <p class="hero-lead text-pretty">
+          Hoje vamos aprender o <strong>loop <code>for</code></strong>: a ferramenta que permite executar a
+          mesma tarefa várias vezes sem copiar e colar código. Vamos percorrer listas, gerar sequências
+          de números e no final construir tabelas de multiplicação juntos.
+        </p>
+        <div class="hero-cards">
+          <a class="hero-card" href="#aula1">
+            <span class="hero-card-num">01</span>
+            <span class="hero-card-title">Sintaxe do <code>for</code></span>
+            <span class="hero-card-desc">Como escrever e ler um loop.</span>
+          </a>
+          <a class="hero-card" href="#aula2">
+            <span class="hero-card-num">02</span>
+            <span class="hero-card-title">Iterar coleções</span>
+            <span class="hero-card-desc">Percorrer listas e textos.</span>
+          </a>
+          <a class="hero-card" href="#aula3">
+            <span class="hero-card-num">03</span>
+            <span class="hero-card-title">Função <code>range()</code></span>
+            <span class="hero-card-desc">Gerar sequências e passo.</span>
+          </a>
+          <a class="hero-card" href="#aula4">
+            <span class="hero-card-num">04</span>
+            <span class="hero-card-title">Desafio final</span>
+            <span class="hero-card-desc">Tabelas de multiplicação.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AULA 1 -->
+    <section id="aula1" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Aula 1</span>
+          <h2 class="section-title">Sintaxe e uso básico do <code>for</code></h2>
+        </div>
+        <p class="section-text text-pretty">
+          Imagine que você precisa escrever "Olá!" cinco vezes. Você poderia repetir a linha cinco vezes...
+          ou usar um loop. O loop <code>for</code> repete um bloco de código uma vez para cada item de uma sequência.
+        </p>
+
+        <div class="concept-grid">
+          <div class="concept-card">
+            <h3>A anatomia de um <code>for</code></h3>
+            <ul class="anatomy">
+              <li><span class="tag tag-key">for</span> a palavra-chave que inicia o loop</li>
+              <li><span class="tag tag-var">variável</span> guarda o item atual da vez</li>
+              <li><span class="tag tag-key">in</span> conecta a variável à sequência</li>
+              <li><span class="tag tag-seq">sequência</span> o conjunto que será percorrido</li>
+              <li><span class="tag tag-body">bloco indentado</span> o que será repetido</li>
+            </ul>
+          </div>
+          <div class="concept-card highlight">
+            <h3>Atenção à indentação!</h3>
+            <p>
+              Em Python, o espaço no início da linha (a <strong>indentação</strong>) indica o que está
+              "dentro" do loop. Sem ela, o Python não entende o seu código e mostra um erro.
+            </p>
+          </div>
+        </div>
+
+        <!-- Console 1 -->
+        <div class="console" data-console>
+          <div class="console-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-file">exemplo_01.py</span>
+          </div>
+          <pre class="console-code"><code><span class="c-key">for</span> <span class="c-var">i</span> <span class="c-key">in</span> <span class="c-fn">range</span>(<span class="c-num">5</span>):
+    <span class="c-fn">print</span>(<span class="c-str">"Olá! Esta é a repetição número"</span>, <span class="c-var">i</span>)</code></pre>
+          <button class="run-btn" data-output="out1">▶ Executar</button>
+          <pre class="console-output" id="out1" hidden><span class="prompt">$ python exemplo_01.py</span>
+Olá! Esta é a repetição número 0
+Olá! Esta é a repetição número 1
+Olá! Esta é a repetição número 2
+Olá! Esta é a repetição número 3
+Olá! Esta é a repetição número 4</pre>
+        </div>
+        <p class="hint">💡 Repare: o Python começa a contar do <strong>0</strong>, não do 1!</p>
+      </div>
+    </section>
+
+    <!-- AULA 2 -->
+    <section id="aula2" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Aula 2</span>
+          <h2 class="section-title">Iteração sobre coleções</h2>
+        </div>
+        <p class="section-text text-pretty">
+          O <code>for</code> não serve só para contar números. Ele consegue percorrer <strong>coleções</strong>:
+          listas de nomes, itens de compras, letras de uma palavra... A cada volta, a variável recebe o próximo item.
+        </p>
+
+        <!-- Console 2 -->
+        <div class="console" data-console>
+          <div class="console-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-file">frutas.py</span>
+          </div>
+          <pre class="console-code"><code><span class="c-var">frutas</span> = [<span class="c-str">"maçã"</span>, <span class="c-str">"banana"</span>, <span class="c-str">"uva"</span>]
+
+<span class="c-key">for</span> <span class="c-var">fruta</span> <span class="c-key">in</span> <span class="c-var">frutas</span>:
+    <span class="c-fn">print</span>(<span class="c-str">"Eu gosto de"</span>, <span class="c-var">fruta</span>)</code></pre>
+          <button class="run-btn" data-output="out2">▶ Executar</button>
+          <pre class="console-output" id="out2" hidden><span class="prompt">$ python frutas.py</span>
+Eu gosto de maçã
+Eu gosto de banana
+Eu gosto de uva</pre>
+        </div>
+
+        <!-- Console 3 -->
+        <div class="console" data-console>
+          <div class="console-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-file">letras.py</span>
+          </div>
+          <pre class="console-code"><code><span class="c-key">for</span> <span class="c-var">letra</span> <span class="c-key">in</span> <span class="c-str">"Python"</span>:
+    <span class="c-fn">print</span>(<span class="c-var">letra</span>)</code></pre>
+          <button class="run-btn" data-output="out3">▶ Executar</button>
+          <pre class="console-output" id="out3" hidden><span class="prompt">$ python letras.py</span>
+P
+y
+t
+h
+o
+n</pre>
+        </div>
+        <p class="hint">💡 Até um texto (string) é uma coleção — de letras!</p>
+      </div>
+    </section>
+
+    <!-- AULA 3 -->
+    <section id="aula3" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Aula 3</span>
+          <h2 class="section-title">A função <code>range()</code> e o passo variável</h2>
+        </div>
+        <p class="section-text text-pretty">
+          A função <code>range()</code> cria sequências de números automaticamente. Ela aceita até três informações:
+          <strong>início</strong>, <strong>fim</strong> (não incluído!) e <strong>passo</strong> (de quanto em quanto).
+        </p>
+
+        <div class="range-grid">
+          <div class="range-card">
+            <code>range(5)</code>
+            <span class="arrow">→</span>
+            <span class="range-out">0, 1, 2, 3, 4</span>
+          </div>
+          <div class="range-card">
+            <code>range(2, 6)</code>
+            <span class="arrow">→</span>
+            <span class="range-out">2, 3, 4, 5</span>
+          </div>
+          <div class="range-card">
+            <code>range(0, 10, 2)</code>
+            <span class="arrow">→</span>
+            <span class="range-out">0, 2, 4, 6, 8</span>
+          </div>
+          <div class="range-card">
+            <code>range(10, 0, -1)</code>
+            <span class="arrow">→</span>
+            <span class="range-out">10, 9, 8 ... 1</span>
+          </div>
+        </div>
+
+        <!-- Console 4 -->
+        <div class="console" data-console>
+          <div class="console-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-file">contagem_regressiva.py</span>
+          </div>
+          <pre class="console-code"><code><span class="c-key">for</span> <span class="c-var">n</span> <span class="c-key">in</span> <span class="c-fn">range</span>(<span class="c-num">5</span>, <span class="c-num">0</span>, <span class="c-num">-1</span>):
+    <span class="c-fn">print</span>(<span class="c-var">n</span>)
+<span class="c-fn">print</span>(<span class="c-str">"Foguete lançado! 🚀"</span>)</code></pre>
+          <button class="run-btn" data-output="out4">▶ Executar</button>
+          <pre class="console-output" id="out4" hidden><span class="prompt">$ python contagem_regressiva.py</span>
+5
+4
+3
+2
+1
+Foguete lançado! 🚀</pre>
+        </div>
+        <p class="hint">💡 O passo negativo (<code>-1</code>) faz o loop contar de trás para frente.</p>
+      </div>
+    </section>
+
+    <!-- AULA 4 -->
+    <section id="aula4" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill pill-accent">Aula 4 · Desafio</span>
+          <h2 class="section-title">Tabelas de multiplicação</h2>
+        </div>
+        <p class="section-text text-pretty">
+          Agora juntamos tudo! Vamos criar uma tabuada usando o <code>for</code>. Escolha um número e veja o loop
+          gerar a tabela inteira. Depois, vamos ver o código que faz isso acontecer.
+        </p>
+
+        <div class="tabuada-tool">
+          <label for="tabuadaInput" class="tabuada-label">Escolha um número:</label>
+          <div class="tabuada-controls">
+            <input type="number" id="tabuadaInput" min="1" max="20" value="7" class="tabuada-input" />
+            <button id="tabuadaBtn" class="run-btn">Gerar tabuada</button>
+          </div>
+          <div class="tabuada-output" id="tabuadaOutput" aria-live="polite"></div>
+        </div>
+
+        <!-- Console 5 -->
+        <div class="console" data-console>
+          <div class="console-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="console-file">tabuada.py</span>
+          </div>
+          <pre class="console-code"><code><span class="c-var">numero</span> = <span class="c-num">7</span>
+
+<span class="c-key">for</span> <span class="c-var">i</span> <span class="c-key">in</span> <span class="c-fn">range</span>(<span class="c-num">1</span>, <span class="c-num">11</span>):
+    <span class="c-var">resultado</span> = <span class="c-var">numero</span> * <span class="c-var">i</span>
+    <span class="c-fn">print</span>(<span class="c-var">numero</span>, <span class="c-str">"x"</span>, <span class="c-var">i</span>, <span class="c-str">"="</span>, <span class="c-var">resultado</span>)</code></pre>
+          <button class="run-btn" data-output="out5">▶ Executar</button>
+          <pre class="console-output" id="out5" hidden><span class="prompt">$ python tabuada.py</span>
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill pill-accent">Quiz</span>
+          <h2 class="section-title">Hora de testar o que aprendemos!</h2>
+        </div>
+        <p class="section-text text-pretty">
+          Responda às perguntas abaixo. Algumas pedem o <strong>resultado do código</strong> — leia com calma e imagine
+          o que o Python vai imprimir.
+        </p>
+
+        <div id="quizContainer" class="quiz"></div>
+
+        <div class="quiz-footer">
+          <button id="quizSubmit" class="run-btn run-btn-lg">Ver meu resultado</button>
+          <div id="quizResult" class="quiz-result" hidden></div>
+          <button id="quizReset" class="reset-btn" hidden>Refazer o quiz</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Semana 9 — Estruturas de Repetição · Material de apoio para a aula de programação.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
